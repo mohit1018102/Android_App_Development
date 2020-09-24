@@ -1,2 +1,2 @@
 # Android_App_Development
-Android Studio code
+Collection of basic utilities required for developing Andriod application using Android Studio (java).
