@@ -2,7 +2,7 @@
 A content provider manages access to a central repository of data. A provider is part of an Android application, which often provides 
 its own UI for working with the data. However, content providers are primarily intended to be used by other applications, which access 
 the provider using a provider client object.<br>
-<p align="center"><img  src="../contentprovider.png"/></p>
+<p align="center"><img  src="../image/contentprovider.png"/></p>
 
 ## 1. Content Resolver
 By using content provider, users can choose to share only some part of the data in one application, thus can avoid privacy data leak in the
