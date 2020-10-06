@@ -17,7 +17,7 @@ __Android uses Intent as a glue that simplifies the integration of applications 
    ```java
    Intent intent=new Intent(MainActivity.this, AnotherActivity.class);
    ```
-### 2. Implicit : (Loosely coupled) (Dynami resolution) (Late runtime binding) (Not for services)
+### 2. Implicit : (Loosely coupled) (Dynamic resolution) (Late runtime binding) (Not for services)
 ```xml
  AndroidManifest.xml
 
