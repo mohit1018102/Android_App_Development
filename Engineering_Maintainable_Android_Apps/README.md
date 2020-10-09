@@ -150,7 +150,7 @@ public class GeoUtils{
          
          public String getCurrentZipCode(double lat, double lng)
          {
-            List<Address> addressloc=geocoder.getFromLocation(lat,lag);
+            List<Address> addressloc=geocoder.getFromLocation(lat,lng,1);
             return adressloc.get(0).getPostalCode();
           }
  }
@@ -178,6 +178,147 @@ public class GeoUtilsIntegrationTest{
           }
  }
 ```
+**Check dependencies inside Build gradle**
+
+
+
+## Mock objects with Android Studio
+
+1. Running Instrumental testing is slow as android studio has to buid, run and then test.<br>
+2. It might be hard to get or create state that we want( for eg. Faking device location.)
+
+**Library Mockito is used for creating mock objects for testing**<br>
+--> Mock objects are stand-in for real objects, but they have a specific behavior that we define.<br>
+
+``` java
+
+@RunWith(MockitoJUnitRunner.class) // We're going to injecting mocks, these are by fake version of objects, into our test.
+public class GeoUtilsTest{
+
+@Mock
+private Geocoder geocoder; // Mock object geocoder;
+
+private GeoUtils geoUtils;
+
+@Before
+public void setup()
+{
+         geoUtils=new GeoUtils(geocoder);
+}
+
+@Test
+public void coordinatesWithNoZipCodeResultNull() throws Exception
+{
+   String zipcode=geoUtils.getCurrentZipCode(0,0);
+   assertNull(zipcode);
+}
+}
+```
+-->Run without launching Emulator with the help of mock objects.
+--> problem earlier version of getCurrentZipCode() has a error of accessing null location get(0).
+
+``` java
+Fixing problem 1.0
+
+public String getCurrentZipCode(double lat, double lng)
+{
+         List<Address> addressLoc=geocoder.getFromLocation(lat,lng,1);
+         String zipcode=(addressLoc.size()>0)?get(0).getPostalCode();null;
+         
+         return zipcode;
+}
+```
+***BUG FIXED NOW CREATING OUT TEST***
+
+``` java
+@Test
+public void nashvilleReturns37212() throws Exception
+{
+         String zipcode=geoUtils.getCurrentZipCode(36.139017, -86.796924);
+         assertEquals("37212",zipcode);
+}
+```
+**Test failed because mock object doesnot know how to return location and returns empty list.**
+
+``` java
+Fixing Test
+
+/* when(on this fun())
+       .then return(this value);
+ */
+ 
+ @Mock
+ private AddressForN;
+ 
+@Test
+public void nashvilleReturns37212() throws Exception
+{        when( geocoder.getFromLocation(36.139017, -86.796924,1) ) 
+                                                               . thenReturn( Arrays.asList(addressForN) );
+         when( addressForN.getPostalCode() )
+                                            . thenReturn("37212"); 
+                                                            
+         String zipcode=geoUtils.getCurrentZipCode(36.139017, -86.796924);
+         assertEquals("37212",zipcode);
+}
+
+```
+***Test Case passed -> created a mock object with behavior***
+
+```java
+general way to define behavior of mock object.
+
+when(geoCoder.getFromLocation(anyDouble(), anyDouble(), anyInt())
+                                                                 . thenReturn(Array.asList(addressForN));
+```
+
+**Check dependencies inside Build gradle**
+
+## UI Testing with Espresso in Android Studio
+
+<p align="center"><img src="../image/login.png"> </p> 
+
+```java
+
+@RunWith(AndroidJUnit4.class)
+public class LoginActivityClass
+{
+
+         @Rule
+         public ActivityTestRule<LoginActivity> mActivityRule=new ActivityTestRule<>(LoginActivity.class);
+         
+         @Before
+         public void setup()
+         {
+                  mActivity.getActivity();
+         }
+         
+         @Test
+         public void notIntiallyDisplayed()
+         {
+                  onView( withId(R.id.errorMessage) ). check(matches (not (isDisplayed()));
+         }
+         
+         @Test
+         public void testPasswordLengthRuleTriggersErrorMsg()
+         {
+                  onView(withId(R.id.password)). perform(typeText("abc"));
+                  onView(withId(R.id.loginButton).perform(click());
+                  
+                  onView( withId(R.id.errorMessage) ).check( matches( isDisplayed() ).check(matches(withText("Bad Password") ) );
+         }
+         
+          @Test
+         public void testValidPasswordDoesnotDisplayErrorMsg()
+         {
+                  onView(withId(R.id.password)). perform(typeText("a long valid password"));
+                  onView(withId(R.id.loginButton).perform(click());
+                  
+                  onView( withId(R.id.errorMessage) ).check( matches(not (isDisplayed()) );
+         }
+ ```
+ 
+ **Check dependencies inside Build gradle**
+
 
 
    
