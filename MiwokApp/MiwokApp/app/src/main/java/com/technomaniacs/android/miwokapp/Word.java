@@ -35,8 +35,24 @@ public class Word {
     public int getmImageId(){return mImageId;}
     public int getmAudioMedia(){return mAudioMedia;}
 
+
+
     public boolean hasImage()
     {
         return (mImageId!=NO_IMAGE_PROVIDED)?true:false;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mImageId=" + mImageId +
+                ", mAudioMedia=" + mAudioMedia +
+                '}';
+    }
+
+
+
+
 }
