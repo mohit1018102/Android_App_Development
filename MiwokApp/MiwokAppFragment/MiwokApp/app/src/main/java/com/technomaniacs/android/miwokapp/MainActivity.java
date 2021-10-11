@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager=findViewById(R.id.parent_view_pager);
         MiwokFragmentPagerAdapter miwokFragmentPagerAdapter=new MiwokFragmentPagerAdapter(this,getSupportFragmentManager(),0);
         viewPager.setAdapter(miwokFragmentPagerAdapter);
-
         TabLayout tabs=findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
     }
@@ -35,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-       miwokMediaPlayerController.stop();
+        miwokMediaPlayerController.stop();
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        miwokMediaPlayerController=null;
     }
 }

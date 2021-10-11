@@ -12,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/brown"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorHeight="4dp"
+        app:tabIndicatorGravity="top"
         app:tabTextColor="@color/white"
-        android:id="@+id/tabs"
-
-        >
+        android:id="@+id/tabs">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
