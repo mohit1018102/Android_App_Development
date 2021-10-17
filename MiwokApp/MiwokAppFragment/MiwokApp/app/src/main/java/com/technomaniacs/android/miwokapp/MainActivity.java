@@ -1,47 +1,45 @@
 package com.technomaniacs.android.miwokapp;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static MiwokMediaPlayerController miwokMediaPlayerController;
-
+    private MiwokMediaPlayerController mMiwokMediaPlayerController;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        miwokMediaPlayerController=new MiwokMediaPlayerController(this);
-        ViewPager viewPager=findViewById(R.id.parent_view_pager);
-        MiwokFragmentPagerAdapter miwokFragmentPagerAdapter=new MiwokFragmentPagerAdapter(this,getSupportFragmentManager(),0);
+        MiwokMediaPlayerControllerSingleton.init(getApplicationContext());
+        mMiwokMediaPlayerController = MiwokMediaPlayerControllerSingleton.getmMiwokMediaPlayerController();
+        viewPager = findViewById(R.id.parent_view_pager);
+        MiwokFragmentPagerAdapter miwokFragmentPagerAdapter = new MiwokFragmentPagerAdapter(this, getSupportFragmentManager(), 0);
         viewPager.setAdapter(miwokFragmentPagerAdapter);
-        TabLayout tabs=findViewById(R.id.tabs);
+        TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        miwokMediaPlayerController.stop();
+        mMiwokMediaPlayerController.stop();
     }
 
 
-
+    /*PagerAdapter should call the destroyItem method not only when it surpasses the offLimitScreenPageLimit but also when a screen rotation occurs, but it doesn't, so it has to be forced to do so... to achieve it,
+       you just have to set to null the adapter on the onStop or onDestroy method of the activity.
+    */
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        miwokMediaPlayerController=null;
+        mMiwokMediaPlayerController = null;
+        MiwokMediaPlayerControllerSingleton.removemMiwokMediaPlayerController();
+        viewPager.setAdapter(null);
     }
 }

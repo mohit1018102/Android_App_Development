@@ -44,21 +44,21 @@ public class FamilyMembersFragment extends Fragment {
         list.setAdapter(item);
         Log.d("testxyz",getString(R.string.colors));
 
-
+        MiwokMediaPlayerController miwokMediaPlayerController=MiwokMediaPlayerControllerSingleton.getmMiwokMediaPlayerController();
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity.miwokMediaPlayerController.stop();
+                miwokMediaPlayerController.stop();
                 Log.d("FamilyMemberActivity: ",words.get(position).toString());
 
 
-                int requestAudioFocus = MainActivity.miwokMediaPlayerController.requestAudioFocus();
+                int requestAudioFocus = miwokMediaPlayerController.requestAudioFocus();
 
                 if (requestAudioFocus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    MainActivity.miwokMediaPlayerController.createMediaPlayer(words.get(position).getmAudioMedia());
-                    MainActivity.miwokMediaPlayerController.setOnCompletionListener();
-                    MainActivity.miwokMediaPlayerController.start();
+                    miwokMediaPlayerController.createMediaPlayer(words.get(position).getmAudioMedia());
+                    miwokMediaPlayerController.setOnCompletionListener();
+                    miwokMediaPlayerController.start();
 
                 } else
                     Toast.makeText(getContext(),

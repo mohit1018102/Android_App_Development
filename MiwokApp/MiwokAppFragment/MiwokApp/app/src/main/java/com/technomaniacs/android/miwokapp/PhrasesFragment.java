@@ -43,21 +43,21 @@ public class PhrasesFragment extends Fragment {
         ListView listView=rootView.findViewById(R.id.phrases_root_view);
         listView.setAdapter(item);
 
-
+        MiwokMediaPlayerController miwokMediaPlayerController=MiwokMediaPlayerControllerSingleton.getmMiwokMediaPlayerController();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Log.d("PhrasesActivity: ",words.get(position).toString());
 
-                MainActivity.miwokMediaPlayerController.stop();
+                miwokMediaPlayerController.stop();
 
-                int requestAudioFocus = MainActivity.miwokMediaPlayerController.requestAudioFocus();
+                int requestAudioFocus = miwokMediaPlayerController.requestAudioFocus();
 
                 if (requestAudioFocus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    MainActivity.miwokMediaPlayerController.createMediaPlayer(words.get(position).getmAudioMedia());
-                    MainActivity.miwokMediaPlayerController.setOnCompletionListener();
-                    MainActivity.miwokMediaPlayerController.start();
+                    miwokMediaPlayerController.createMediaPlayer(words.get(position).getmAudioMedia());
+                    miwokMediaPlayerController.setOnCompletionListener();
+                    miwokMediaPlayerController.start();
 
                 } else
                     Toast.makeText(getContext(),
