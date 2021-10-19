@@ -3,6 +3,7 @@ This app displays lists of basic vocabulary words for the user to learn Miwok la
 # Pre-requisities
 1. Android SDK : **( minSdk 21 | targetSdk 30 )**
 2. Android bulid tool : **com.android.tools.build:gradle:7.0.2**
+3. To use Tab layout : **com.google.android.material:material:1.3.0**
 # Features
 1. Numbers
 2. Colors
