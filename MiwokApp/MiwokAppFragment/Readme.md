@@ -1,5 +1,10 @@
+
 # Miwok App 
 This app displays lists of basic vocabulary words for the user to learn Miwok language.
+# Preview :
+<p align="center"><img src="../img/miwok2.gif" align="center" width=250dp height=600dp /> 
+                                                            <img src="../img/miwok(h).gif" align="center" width=600dp height=250dp  /></p>
+                                                            
 # Pre-requisities
 1. Android SDK : **( minSdk 21 | targetSdk 30 )**
 2. Android bulid tool : **com.android.tools.build:gradle:7.0.2**
@@ -17,6 +22,3 @@ This app displays lists of basic vocabulary words for the user to learn Miwok la
 4. MediaPlayer
 5. AudioFocus
 
-# Preview :
-<p align="center"><img src="../img/miwok2.gif" align="center" width=250dp height=600dp /> 
-                                                            <img src="../img/miwok(h).gif" align="center" width=600dp height=250dp  /></p>
