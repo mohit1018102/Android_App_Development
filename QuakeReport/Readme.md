@@ -2,7 +2,10 @@
 
 1. This app displays a list of recent earthquakes in the world from the U.S. Geological Survey (USGS) organization.
 
+# Preview
+
+
 # Pre-requisites
-1. Android SDK v23
-2. Android Build Tools v23.0.2
-3. Android Support Repository v23.3.0
+1. Android SDK : ( minSdk 16 | targetSdk 30 )
+2. Android bulid tool : com.android.tools.build:gradle:7.0.2
+
