@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Quake Report</string>
+    <string name="no_record">No record Found!!!</string>
+    <string name="no_internet_connection"> No Internet Connection</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+   <string name="settings_menu_item">Settings</string>
+    <!-- String array for Setting Activity -->
+
+
+    <string-array name="min_mag_list" >
+        <item name="seven">7</item>
+        <item name="six">6</item>
+        <item name="five">5</item>
+        <item name="four">4</item>
+        <item name="three">3</item>
+        <item name="two">2</item>
+        <item name="one">1</item>
+    </string-array>
+</resources>
