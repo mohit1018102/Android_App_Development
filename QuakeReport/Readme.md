@@ -12,3 +12,8 @@
 1. Android SDK : ( minSdk 16 | targetSdk 30 )
 2. Android bulid tool : com.android.tools.build:gradle:7.0.2
 
+# Component/Concept used : 
+1. ListView + ArrayAdapter 
+2. Shared Preferences 
+3. Java Thread & Inter thread communication.
+
