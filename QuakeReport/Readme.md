@@ -4,7 +4,7 @@
 
 # Preview
 <p align="center">
-      <img src= "GIF-211107_165542.gif"/>
+      <img src= "GIF-211107_165542.gif" height=600 width=250/>
 </p>
 
 
