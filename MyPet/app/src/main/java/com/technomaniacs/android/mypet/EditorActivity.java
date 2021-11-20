@@ -2,10 +2,12 @@ package com.technomaniacs.android.mypet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.technomaniacs.android.mypet.db.PetContract;
 import com.technomaniacs.android.mypet.db.PetContract.PetEntry;
 import com.technomaniacs.android.mypet.db.PetDbHelper;
 
@@ -125,16 +128,19 @@ public class EditorActivity extends AppCompatActivity {
 
 
     private long  insertData()
-    {    PetDbHelper dbHelper=new PetDbHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-
+    {
         //data
         String name= String.valueOf(mNameEditText.getText());
         String breed=String.valueOf(mNameEditText.getText());
         int gender=mGender;
-        int weight=Integer.parseInt(String.valueOf(mWeightEditText.getText()));
-
+        int weight;
+        try {
+            weight = Integer.parseInt(String.valueOf(mWeightEditText.getText()));
+        }
+        catch (Exception e)
+        {
+            weight=-1;
+        }
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(PetEntry.COLUMN_PET_NAME,name);
@@ -142,11 +148,12 @@ public class EditorActivity extends AppCompatActivity {
         values.put(PetEntry.COLUMN_PET_GENDER,gender);
         values.put(PetEntry.COLUMN_PET_WEIGHT,weight);
 
-
-
         // Insert the new row, returning the primary key value of the new row
-        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);//returns id otherwise -1
-        return newRowId;
+        //Uri made=Uri.withAppendedPath(PetContract.CONTENT_URI_ALL, String.valueOf(1));
+        //int x=getContentResolver().update(made,values,null,null);
+        //return x;
+        Uri uri = getContentResolver().insert(PetContract.CONTENT_URI_ALL,values);//returns id otherwise -1
+        return (uri==null)?-1: ContentUris.parseId(uri);
     }
 
 
@@ -157,6 +164,7 @@ public class EditorActivity extends AppCompatActivity {
         if(id==R.id.action_save)
         {
             long rowId=insertData();
+
             if(rowId!=-1)
             {
                 Toast.makeText(this,"Record Inserted !!!",Toast.LENGTH_SHORT).show();

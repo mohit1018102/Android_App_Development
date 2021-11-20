@@ -1,7 +1,9 @@
 package com.technomaniacs.android.mypet.db;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
 
+import java.net.URI;
 import java.util.stream.BaseStream;
 
 public final class PetContract {
@@ -21,6 +23,10 @@ public final class PetContract {
     private PetContract()
     {
     }
+
+    public static final String CONTENT_AUTHORITY = "com.technomaniacs.android.mypet";
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    public static final Uri CONTENT_URI_ALL = Uri.withAppendedPath(BASE_CONTENT_URI, PetEntry.TABLE_NAME);
 
     public static class PetEntry implements BaseColumns
     {

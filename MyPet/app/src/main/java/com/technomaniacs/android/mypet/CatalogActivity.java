@@ -3,10 +3,12 @@ package com.technomaniacs.android.mypet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.technomaniacs.android.mypet.db.PetContract;
 import com.technomaniacs.android.mypet.db.PetContract.PetEntry;
 import com.technomaniacs.android.mypet.db.PetDbHelper;
 
@@ -36,15 +39,8 @@ public class CatalogActivity extends AppCompatActivity {
 
 
     try{
-        cursor = db.query(
-                PetEntry.TABLE_NAME,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                null               // The sort order
-        );
+      cursor=getContentResolver().query(PetContract.CONTENT_URI_ALL,projection,null,null,null);
+
 
            int nameid=cursor.getColumnIndex(PetEntry.COLUMN_PET_NAME);
 
@@ -65,8 +61,7 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private long insertData()
-    {    PetDbHelper dbHelper=new PetDbHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    {
 
        // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
@@ -78,8 +73,8 @@ public class CatalogActivity extends AppCompatActivity {
 
 
         // Insert the new row, returning the primary key value of the new row
-        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);//returns id otherwise -1
-        return newRowId;
+        Uri uri = getContentResolver().insert(PetContract.CONTENT_URI_ALL,values);//returns id otherwise -1
+        return (uri==null)?-1: ContentUris.parseId(uri);
     }
 
     @Override
@@ -131,7 +126,8 @@ public class CatalogActivity extends AppCompatActivity {
         else
             if(id==R.id.delete_all)
             {
-
+                int row=getContentResolver().delete(PetContract.CONTENT_URI_ALL,null,null);
+                Toast.makeText(getApplicationContext(),"All data deleted : row count "+row,Toast.LENGTH_SHORT).show();
             }
         return super.onOptionsItemSelected(item);
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shelter</string>
+    <string name="app_name">My Pet</string>
     <string name="insert_dummy_data">Insert dummy data</string>
     <string name="delete_all">Delete all</string>
     <string name="add_a_pet">Add a Pet</string>
