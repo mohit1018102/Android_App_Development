@@ -59,6 +59,10 @@ public class PetProvider extends ContentProvider {
         }
 
         cursor= db.query(PetEntry.TABLE_NAME,projection,selection,selectionArgs,null,null,sortOrder);
+        // Set notification URI on the Cursor,
+        // so we know what content URI the Cursor was created for.
+        // If the data at this URI changes, then we know we need to update the Cursor.
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -105,7 +109,8 @@ public class PetProvider extends ContentProvider {
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(PetEntry.TABLE_NAME, null, contentValues);//returns id otherwise -1
-
+        // Notify all listeners that the data has changed for the pet content URI
+        if(newRowId>=0) getContext().getContentResolver().notifyChange(uri, null);
         return (newRowId<0)?null:Uri.withAppendedPath(uri, String.valueOf(newRowId));
     }
 
@@ -139,6 +144,7 @@ public class PetProvider extends ContentProvider {
             default:
         }
         rowDeleted=db.delete(PetEntry.TABLE_NAME,selection,selectionArgs);
+        if(rowDeleted>0) getContext().getContentResolver().notifyChange(uri, null);
         return rowDeleted;
     }
 
@@ -162,6 +168,7 @@ public class PetProvider extends ContentProvider {
                 selection=PetEntry._ID+"=?";
                 selectionArgs=new String[] {String.valueOf(ContentUris.parseId(uri))};
                 rowAffected=updateData(values,selection,selectionArgs);
+                if(rowAffected>0) getContext().getContentResolver().notifyChange(uri, null);
                 break;
             default: return -1;
         }

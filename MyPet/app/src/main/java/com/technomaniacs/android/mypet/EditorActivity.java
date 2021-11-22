@@ -147,11 +147,6 @@ public class EditorActivity extends AppCompatActivity {
         values.put(PetEntry.COLUMN_PET_BREED,breed);
         values.put(PetEntry.COLUMN_PET_GENDER,gender);
         values.put(PetEntry.COLUMN_PET_WEIGHT,weight);
-
-        // Insert the new row, returning the primary key value of the new row
-        //Uri made=Uri.withAppendedPath(PetContract.CONTENT_URI_ALL, String.valueOf(1));
-        //int x=getContentResolver().update(made,values,null,null);
-        //return x;
         Uri uri = getContentResolver().insert(PetContract.CONTENT_URI_ALL,values);//returns id otherwise -1
         return (uri==null)?-1: ContentUris.parseId(uri);
     }
