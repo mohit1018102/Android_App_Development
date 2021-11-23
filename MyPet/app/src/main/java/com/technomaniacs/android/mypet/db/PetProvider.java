@@ -14,6 +14,8 @@ import com.technomaniacs.android.mypet.db.PetContract.PetEntry;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.nio.ShortBuffer;
+
 public class PetProvider extends ContentProvider {
 
     private PetDbHelper mPetDbHelper=null;
@@ -144,9 +146,14 @@ public class PetProvider extends ContentProvider {
             default:
         }
         rowDeleted=db.delete(PetEntry.TABLE_NAME,selection,selectionArgs);
-        if(rowDeleted>0) getContext().getContentResolver().notifyChange(uri, null);
+
+        if(rowDeleted!=0){
+            getContext().getContentResolver().notifyChange(uri, null);
+
+        }
         return rowDeleted;
     }
+
 
 
 

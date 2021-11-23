@@ -39,4 +39,17 @@
 
     <!-- Label for editor overflow menu option that deletes the current pet [CHAR LIMIT=20] -->
     <string name="action_delete">Delete</string>
+    <string name="editor_activity_add_new">Add a Pet</string>
+    <string name="editor_activity_edit_pet">Edit Pet Details</string>
+    <string name="delete_dialog_msg">Do you want delete this pet ?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="editor_delete_pet_failed">Deletion Failed !!!</string>
+    <string name="editor_delete_pet_successful">Deleted Sucessfully !!!</string>
+    <string name="update_dialog_msg">Do you want to update ?</string>
+    <string name="save_dialog_msg">Do you want to Save ?</string>
+    <string name="yes">yes</string>
+    <string name="empty_view_subtitle_text">It\'s a bit lonely here... \n Get started by adding a pet</string>
+    <string name="Wipe_out_all_data">Do you want to wipe all the data ?</string>
+    <string name="are_you_sure">"Are you sure "</string>
 </resources>

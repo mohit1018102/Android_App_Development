@@ -11,8 +11,11 @@
         <entry key="..\:/Users/mohit/AndroidStudioProjects/MyPet/app/src/main/res/menu/menu_catalog.xml" value="0.1" />
         <entry key="..\:/Users/mohit/AndroidStudioProjects/MyPet/app/src/main/res/menu/menu_editor.xml" value="0.2" />
         <entry key="..\:/Users/mohit/AndroidStudioProjects/MyPet/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
-        <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/layout/activity_catalog.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/drawable/pet_circle.xml" value="0.16614583333333333" />
+        <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/layout/activity_catalog.xml" value="0.25" />
         <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/layout/pet_list_view_item.xml" value="0.33" />
+        <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/menu/menu_catalog.xml" value="0.33" />
+        <entry key="..\:/Users/mohit/OneDrive/Desktop/Android_App_Development/MyPet/app/src/main/res/menu/menu_editor.xml" value="0.1421875" />
       </map>
     </option>
   </component>

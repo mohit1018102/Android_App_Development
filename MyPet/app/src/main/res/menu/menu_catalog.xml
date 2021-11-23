@@ -6,12 +6,15 @@
     <item
         android:id="@+id/insert_dummy_data"
         android:title="@string/insert_dummy_data"
+        android:iconTint="@color/black"
         app:showAsAction="never"
         />
     <item
         android:id="@+id/delete_all"
         android:title="@string/delete_all"
-        app:showAsAction="never"
+        android:icon="@drawable/ic_action_delete"
+        android:iconTint="@color/black"
+        app:showAsAction="ifRoom"
         />
 
 </menu>
