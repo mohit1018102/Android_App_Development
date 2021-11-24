@@ -118,7 +118,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // for the postivie and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.Wipe_out_all_data);
-        builder.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.delete_all, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked the "Delete" button, so delete the pet.
                 int row=getContentResolver().delete(PetContract.CONTENT_URI_ALL,null,null);

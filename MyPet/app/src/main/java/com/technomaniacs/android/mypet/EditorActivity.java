@@ -3,6 +3,7 @@ package com.technomaniacs.android.mypet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
@@ -91,7 +92,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mWeightEditText = (EditText) findViewById(R.id.edit_pet_weight);
         mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
         setupSpinner();
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_add_pet);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -279,19 +280,27 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
         int id=item.getItemId();
-        if(id==R.id.action_save)
-        {
-            showSaveAndUpdateDialog();
 
-        }
-        else if(id==R.id.action_delete)
+        switch(id)
         {
-            showDeleteConfirmationDialog();
+            case R.id.action_save: showSaveAndUpdateDialog();
+            break;
+            case R.id.action_delete:showDeleteConfirmationDialog();
+            break;
+            case android.R.id.home:
+                finish();
+                break;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+       return;
+    }
 
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners

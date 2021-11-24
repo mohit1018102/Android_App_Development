@@ -44,7 +44,7 @@
             android:layout_gravity="right"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="right"
-            android:textColor="@color/black"
+            style="@style/ListText"
             android:textSize="20sp"
             tools:text="hello"
             />
