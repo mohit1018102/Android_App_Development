@@ -6,6 +6,7 @@
 2. Android bulid tool : com.android.tools.build:gradle:7.0.2
 
 # Preview
+<img src="Preview/petapp1.gif" width=300dp height=700dp/> <img src="Preview/petapp2.gif" width=300dp height=700dp/> <img src="Preview/petapp3.gif" width=300dp height=700dp/>
 
 
 # Components Used:
