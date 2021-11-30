@@ -2,7 +2,7 @@
 Designed first 3 UI screen of Neflix application.
 
 # Preview
-<img src="sc1.PNG" width=300dp height=700dp/> <img src="sc2.PNG" width=300dp height=700dp/> <img src="sc3.PNG" width=300dp height=700dp/>
+<img src="sc1.png" width=300dp height=700dp/> <img src="sc2.png" width=300dp height=700dp/> <img src="sc3.png" width=300dp height=700dp/>
 
 
 # Pre-requisites
