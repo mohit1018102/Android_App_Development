@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+
+        android:id="@+id/toppanel">
+
+        <ImageView
+
+            android:layout_width="358dp"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.9"
+            android:paddingLeft="62dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/notflix" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:background="@color/ic_notflix_background"
+            android:scaleType="fitEnd"
+
+            android:src="@drawable/ic_edit"
+
+            />
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/toppanel"
+        android:id="@+id/textmid"
+        android:text="Who's Watching?"
+        android:textColor="#FFFF"
+        android:textSize="40sp"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_below="@id/textmid"
+        android:id="@+id/account"
+        android:layout_centerHorizontal="true"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

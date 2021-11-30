@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content"
+
+    android:padding="10dp"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    >
+
+    <ImageButton
+        android:id="@+id/leftview"
+        android:layout_width="103dp"
+        android:layout_height="119dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_round"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/kids" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="name"
+        android:textSize="15sp"
+        android:paddingTop="1dp"
+        android:id="@+id/acc_name"
+        android:layout_gravity="center"
+        android:textColor="#FFFF"
+        />
+</LinearLayout>

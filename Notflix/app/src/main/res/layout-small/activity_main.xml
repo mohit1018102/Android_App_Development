@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="63dp"
+        android:layout_centerInParent="true"
+        android:background="#0000"
+        android:src="@drawable/notflix"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="50dp" />
+</RelativeLayout>
